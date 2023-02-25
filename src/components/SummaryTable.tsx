@@ -21,7 +21,7 @@ type Summary = {
 
 export function SummaryTable() {
   const [summary, setSummary] = useState<Summary>([])
-  //useEffect() -> lidar com efeitos colaterais
+  // useEffect() -> lidar com efeitos colaterais
   // parametros: o que vai acontece, e quando vai acontecer. Exenmplo, toda vez que uma variavel mudar, vai executar o codigo
   // isso é tipo um watch né?
   // Se deixa o [] vazio, vai exexutar apenas unma vezes quando o o componente foi exibido em tela a primeira vez
@@ -47,20 +47,21 @@ export function SummaryTable() {
         })}
       </div>
       <div className='grid grid-rows-7 grid-flow-col gap-3'>
-        {summaryDates.map((date) => {
-          const dayInSummary = summary.find((day) => {
-            return dayjs(date).isSame(day.date, 'day')
-          })
+        {summary.length > 0 &&
+          summaryDates.map((date) => {
+            const dayInSummary = summary.find((day) => {
+              return dayjs(date).isSame(day.date, 'day')
+            })
 
-          return (
-            <HabitDay
-              key={date.toString()}
-              date={date}
-              amount={dayInSummary?.amount}
-              completed={dayInSummary?.completed}
-            />
-          )
-        })}
+            return (
+              <HabitDay
+                key={date.toString()}
+                date={date}
+                amount={dayInSummary?.amount}
+                defaultCompleted={dayInSummary?.completed}
+              />
+            )
+          })}
 
         {amountOfDaysToFill > 0 &&
           Array.from({ length: amountOfDaysToFill }).map((_, i) => {
