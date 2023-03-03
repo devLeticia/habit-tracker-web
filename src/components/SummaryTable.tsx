@@ -1,8 +1,9 @@
 import { HabitDay } from './HabitDay'
 import { generateDatesFromYearBeginning } from './../utils/generate-dates-from-year-beginning'
 import { useEffect, useState } from 'react'
-import { api } from './../lib/axios'
+import  api  from './../lib/axios'
 import dayjs from 'dayjs'
+
 
 const weekDays = ['D', 'S', 'T', 'Q', 'Q', 'S', 'S']
 
@@ -33,7 +34,7 @@ export function SummaryTable() {
   }, [])
 
   return (
-    <div className='w-full flex'>
+    <div className='w-full flex mt-20'>
       <div className='grid grid-rows-7 grid-flow-row gap-3'>
         {weekDays.map((weekday, i) => {
           return (

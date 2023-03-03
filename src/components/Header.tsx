@@ -1,15 +1,28 @@
 import logoImage from '../assets/logo.svg'
 import * as Dialog from '@radix-ui/react-dialog'
-import { Plus, X } from 'phosphor-react'
+import { Plus, X, Door } from 'phosphor-react'
 import { useState } from 'react'
 import { Root } from './../../node_modules/@radix-ui/react-dialog/dist/index.d'
 import { NewHabitForm } from './NewHabitForm'
+import { signOut } from 'firebase/auth'
+import { auth } from '../services/firebase'
 
 export function Header() {
+  function handleSignOut() {
+    signOut(auth)
+      .then((resp) => {
+        console.log('fez logout')
+        // Sign-out successful.
+      })
+      .catch((error) => {
+        // An error happened.
+        console.log('erro', error)
+      })
+  }
   return (
     <div className='w-full max-w-3xl mx-auto flex items-center justify-between'>
       <img src={logoImage} alt='Habits' />
-
+      <Door size={20} className='text-violet-500' onClick={handleSignOut} />
       <Dialog.Root>
         <Dialog.Trigger
           type='button'

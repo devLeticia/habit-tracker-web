@@ -2,7 +2,7 @@ import * as Checkbox from '@radix-ui/react-checkbox'
 import dayjs from 'dayjs'
 import { Check } from 'phosphor-react'
 import { useEffect, useState } from 'react'
-import { api } from '../lib/axios'
+import  api from '../lib/axios'
 
 interface HabitsList {
   date: Date
