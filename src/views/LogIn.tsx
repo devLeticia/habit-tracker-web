@@ -14,15 +14,22 @@ import {
 } from 'firebase/auth'
 
 interface LogInProps {
-  handleComponentToShow: (component: string) => any
+  onChangeComponentToShow: (component: string) => any
 }
 
-export function LogIn({ handleComponentToShow }: LogInProps) {
+export function LogIn({ onChangeComponentToShow }: LogInProps) {
   const [user, setUser] = useState<User>({} as User)
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
+  function handleComponentToShow () {
+    onChangeComponentToShow('FORGOT_PASSWORD')
+  } 
   function handleShowPasswordResetEmail() {
+    console.log('Tell UI to show reset password component')
+  }
+  function handleEmailInvalid () {
+   // event?.target.setCustomValidity
     console.log('Tell UI to show reset password component')
   }
 
@@ -37,6 +44,7 @@ export function LogIn({ handleComponentToShow }: LogInProps) {
         autoFocus
         value={email}
         onChange={(event) => setEmail(event.target.value)}
+        required
       />
       <input
         type='text'
@@ -46,9 +54,16 @@ export function LogIn({ handleComponentToShow }: LogInProps) {
         autoFocus
         value={password}
         onChange={(event) => setPassword(event.target.value)}
+        required
+        onInvalid={handleEmailInvalid}
       />
+      <button 
+      //disabled={email.length <= 10}
+      >
+        Entrar
+      </button>
       <div
-        onClick={handleComponentToShow('FORGOT_PASSWORD')}
+        onClick={handleComponentToShow}
         className='mt-3 w-full text-right text-sm cursor-pointer  text-violet-500 hover:text-violet-400 '
       >
         Forgot the password?
