@@ -13,7 +13,7 @@ interface pageHeader {
 const headers = [
   {
     id: 'LOG_IN',
-    title: 'Login In',
+    title: 'Login',
     subheader: 'A Habit a Day Keeps the Failure Away',
   },
   {
@@ -48,7 +48,7 @@ export function Authentication() {
       case 'FORGOT_PASSWORD':
         return <ForgotPassword />
       default:
-        return <SignUp />
+        return <LogIn onChangeComponentToShow={changeComponentToShow}/>
     }
   }
   return (
@@ -57,12 +57,6 @@ export function Authentication() {
         <h1 className='font-bold text-3xl mb-3'>{componentHeader.title}</h1>
         <span className='mt-10 text-zinc-400'>{componentHeader.subheader}</span>
         {showComponent(componentName)}
-        <button
-          onClick={() => changeComponentToShow('SIGN_IN')}
-          className='w-full mt-6 font-semibold flex justify-center items-center border border-violet-500 gap-3 py-4 rounded-lg transition-colors duration-150'
-        >
-          Voltar
-        </button>
       </div>
     </div>
   )
