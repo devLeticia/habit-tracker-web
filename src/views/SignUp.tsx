@@ -11,7 +11,11 @@ import {
   User,
 } from 'firebase/auth'
 
-export function SignUp() {
+interface SignUpProps {
+  onChangeComponentToShow: (component: string) => any
+}
+
+export function SignUp({onChangeComponentToShow}: SignUpProps) {
   const [userName, setUserName] = useState('')
   const [user, setUser] = useState<User>({} as User)
   const [email, setEmail] = useState('')
@@ -67,9 +71,9 @@ export function SignUp() {
         console.log('erro', errorCode, errorMessage)
       })
   }
-  function handleShowLogIn() {
-    console.log('vai pra la')
-  }
+  function handleComponentToShow (componentName: string) {
+    onChangeComponentToShow(componentName)
+  } 
 
   return (
     <div>
@@ -112,7 +116,7 @@ export function SignUp() {
       <button
         type='button'
         className='w-full mt-4 border-2 border-violet-500 hover:bg-violet-800 hover:bg-opacity-20 font-semibold flex justify-center items-center gap-3 py-4 rounded-lg transition-colors duration-150'
-        onClick={handleShowLogIn}
+        onClick={() => handleComponentToShow('SING_IN')}
       >
         Login
       </button>

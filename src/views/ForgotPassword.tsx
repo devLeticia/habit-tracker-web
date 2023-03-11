@@ -2,7 +2,11 @@ import { sendPasswordResetEmail } from 'firebase/auth'
 import { useState } from 'react'
 import { auth } from '../services/firebase'
 
-export function ForgotPassword() {
+interface ForgotPasswordProps {
+  onChangeComponentToShow: (component: string) => any
+}
+
+export function ForgotPassword({onChangeComponentToShow}: ForgotPasswordProps) {
   const [email, setEmail] = useState('')
 
   function handleSendPasswordResetEmail() {
@@ -18,6 +22,10 @@ export function ForgotPassword() {
         // ..
       })
   }
+  function handleComponentToShow (componentName: string) {
+    onChangeComponentToShow(componentName)
+  } 
+
   return (
     <div>
       <input
@@ -37,6 +45,12 @@ export function ForgotPassword() {
       >
         Send recover e-mail
       </button>
+      <span
+        onClick={() => handleComponentToShow('SING_UP')}
+        className='mt-6  block text-sm cursor-pointer  text-violet-500 hover:text-violet-400'
+      >
+       Log In 
+      </span>
     </div>
   )
 }

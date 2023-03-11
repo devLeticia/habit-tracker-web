@@ -89,7 +89,7 @@ export function LogIn({ onChangeComponentToShow }: LogInProps) {
         Forgot the password?
       </span>
       <span
-        onClick={() => handleComponentToShow('SING_UP')}
+        onClick={() => handleComponentToShow('SIGN_UP')}
         className='mt-3  text-sm cursor-pointer  text-violet-500 hover:text-violet-400'
       >
         Create Account

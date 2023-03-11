@@ -18,7 +18,7 @@ const headers = [
   },
   {
     id: 'SIGN_UP',
-    title: 'Sign Up',
+    title: 'Sign Up With Email',
     subheader: 'The first step to ignite your goals!',
   },
   {
@@ -44,9 +44,9 @@ export function Authentication() {
       case 'SIGN_IN':
         return <LogIn onChangeComponentToShow={changeComponentToShow} />
       case 'SIGN_UP':
-        return <SignUp />
+        return <SignUp onChangeComponentToShow={changeComponentToShow}/>
       case 'FORGOT_PASSWORD':
-        return <ForgotPassword />
+        return <ForgotPassword onChangeComponentToShow={changeComponentToShow}/>
       default:
         return <LogIn onChangeComponentToShow={changeComponentToShow}/>
     }
