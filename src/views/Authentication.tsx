@@ -52,8 +52,8 @@ export function Authentication() {
     }
   }
   return (
-    <div className='flex justify-center items-center text-center transition-transform'>
-      <div className='w-full max-w-lg bg-zinc-900 rounded-xl p-10 gap-16 text-center'>
+    <div className='flex justify-center items-center text-center'>
+      <div className='w-full max-w-lg bg-zinc-900 rounded-xl p-10 gap-16 text-center transition-height  duration-500 ease-in-out'>
         <h1 className='font-bold text-3xl mb-3'>{componentHeader.title}</h1>
         <span className='mt-10 text-zinc-400'>{componentHeader.subheader}</span>
         {showComponent(componentName)}

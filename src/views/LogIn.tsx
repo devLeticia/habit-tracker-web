@@ -75,22 +75,22 @@ export function LogIn({ onChangeComponentToShow }: LogInProps) {
        className='w-full mt-3 font-semibold flex justify-center items-center bg-violet-500 hover:bg-violet-400 gap-3 py-4 rounded-lg transition-colors duration-150'
       //disabled={email.length <= 10}
       >
-        Entrar
+        Sign In 
       </button>
-      <Divider />
-      <div className='flex flex-col gap-3'>
+      <Divider/>
+      <div className='flex gap-3'>
         <TwitterSignInButton />
         <GoogleSignInButton />
       </div>
       <span
         onClick={() => handleComponentToShow('FORGOT_PASSWORD')}
-        className='mt-3  block text-sm cursor-pointer  text-violet-500 hover:text-violet-400'
+        className='mt-6 block text-sm cursor-pointer  text-violet-500 hover:text-violet-400'
       >
         Forgot the password?
       </span>
       <span
         onClick={() => handleComponentToShow('SIGN_UP')}
-        className='mt-3  text-sm cursor-pointer  text-violet-500 hover:text-violet-400'
+        className='mt-6 text-sm cursor-pointer  text-violet-500 hover:text-violet-400'
       >
         Create Account
       </span>

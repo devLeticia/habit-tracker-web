@@ -13,7 +13,7 @@ export function TwitterSignInButton() {
     
     function handleTwitterSignIn() {
         const provider = new TwitterAuthProvider()
-    
+        console.log('vai fazer auth com twitter')
         signInWithPopup(auth, provider)
           .then(async (result) => {
             console.log(result)
@@ -34,7 +34,7 @@ export function TwitterSignInButton() {
         onClick={handleTwitterSignIn}
       >
         <TwitterLogo size={24} weight='fill' />
-        Entrar com Twitter
+       Twitter
       </button>
       )
 }

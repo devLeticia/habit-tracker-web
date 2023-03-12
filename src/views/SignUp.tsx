@@ -15,7 +15,7 @@ interface SignUpProps {
   onChangeComponentToShow: (component: string) => any
 }
 
-export function SignUp({onChangeComponentToShow}: SignUpProps) {
+export function SignUp({ onChangeComponentToShow }: SignUpProps) {
   const [userName, setUserName] = useState('')
   const [user, setUser] = useState<User>({} as User)
   const [email, setEmail] = useState('')
@@ -71,16 +71,16 @@ export function SignUp({onChangeComponentToShow}: SignUpProps) {
         console.log('erro', errorCode, errorMessage)
       })
   }
-  function handleComponentToShow (componentName: string) {
+  function handleComponentToShow(componentName: string) {
     onChangeComponentToShow(componentName)
-  } 
+  }
 
   return (
     <div>
       <input
         type='text'
         id='userName'
-        placeholder='Nome ou apelido'
+        placeholder='Name/nickname'
         className='block w-full p-4 rounded-lg mt-8 bg-zinc-800 text-white placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-violet-700 focus:ring-offset-2 focus:ring-offset-zinc-900'
         autoFocus
         value={userName}

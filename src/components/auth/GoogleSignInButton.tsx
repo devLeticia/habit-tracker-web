@@ -34,7 +34,7 @@ export function GoogleSignInButton() {
         onClick={handleGoogleSignIn}
       >
         <GoogleLogo size={24} weight='bold' />
-        Entrar com Google
+        Google
       </button>
       )
 }
