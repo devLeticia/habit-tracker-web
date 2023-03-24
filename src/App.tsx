@@ -6,6 +6,7 @@ import { onAuthStateChanged } from 'firebase/auth'
 import jwt from './auth/index'
 import { BrowserRouter } from 'react-router-dom'
 import { Router } from './Router'
+import { AuthContextProvider } from './contexts/AuthContext'
 
 function App() {
   const [isLoggedIn, setStateIsLoggedIn] = useState(false)
@@ -32,7 +33,9 @@ function App() {
   return (
     <div>
       <BrowserRouter>
-        <Router />
+        <AuthContextProvider>
+          <Router />
+        </AuthContextProvider>
       </BrowserRouter>
     </div>
   )

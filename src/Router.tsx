@@ -1,8 +1,21 @@
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, Navigate } from 'react-router-dom'
+import { NotFound } from './components/404/NotFound'
 import { SummaryTable } from './components/SummaryTable'
 import { DefaultLayout } from './layouts/DefaultLayout'
-import { FullPageLayout } from './layouts/FullpageLayout'
+import { FullPageLayout } from './layouts/FullPageLayout'
 import { Authentication } from './views/Authentication'
+
+interface ProtectedRouteProp {
+  userIsAuthenticated: boolean
+  children: React.ReactElement
+}
+
+function ProtectedRoute({ userIsAuthenticated, children }: ProtectedRouteProp) {
+  if (!userIsAuthenticated) {
+    return <Navigate to='/login' replace />
+  }
+  return children
+}
 
 export function Router() {
   return (
@@ -11,9 +24,17 @@ export function Router() {
         <Route path='/login' element={<Authentication />} />
       </Route>
 
-      <Route path='/home' element={<DefaultLayout />}>
-        <Route path='/home' element={<SummaryTable />} />
+      <Route path='/' element={<DefaultLayout />}>
+        <Route
+          path='/'
+          element={
+            <ProtectedRoute userIsAuthenticated={false}>
+              <SummaryTable />
+            </ProtectedRoute>
+          }
+        />
       </Route>
+      <Route path='*' element={<NotFound />} />
     </Routes>
   )
 }

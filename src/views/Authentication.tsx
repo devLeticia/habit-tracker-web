@@ -2,11 +2,11 @@
 
 import { SignUp } from './SignUp'
 import { LogIn } from './LogIn'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { ForgotPassword } from './ForgotPassword'
 
 interface pageHeader {
-  id: string,
+  id: string
   title: string
   subheader: string
 }
@@ -14,7 +14,7 @@ const headers = [
   {
     id: 'LOG_IN',
     title: 'Login',
-    subheader: 'A Habit a Day Keeps the Failure Away',
+    subheader: 'Some Habits a Day Keep the Failure Away',
   },
   {
     id: 'SIGN_UP',
@@ -31,11 +31,9 @@ export function Authentication() {
   const [componentName, setComponentName] = useState<String>('')
   const [componentHeader, setComponentHeader] = useState<pageHeader>(headers[0])
 
-
-
   function changeComponentToShow(componentName: String) {
     setComponentName(componentName)
-    const component = headers.find(header => header.id === componentName)
+    const component = headers.find((header) => header.id === componentName)
     if (component) setComponentHeader(component)
   }
 
@@ -44,11 +42,13 @@ export function Authentication() {
       case 'SIGN_IN':
         return <LogIn onChangeComponentToShow={changeComponentToShow} />
       case 'SIGN_UP':
-        return <SignUp onChangeComponentToShow={changeComponentToShow}/>
+        return <SignUp onChangeComponentToShow={changeComponentToShow} />
       case 'FORGOT_PASSWORD':
-        return <ForgotPassword onChangeComponentToShow={changeComponentToShow}/>
+        return (
+          <ForgotPassword onChangeComponentToShow={changeComponentToShow} />
+        )
       default:
-        return <LogIn onChangeComponentToShow={changeComponentToShow}/>
+        return <LogIn onChangeComponentToShow={changeComponentToShow} />
     }
   }
   return (
